@@ -89,21 +89,21 @@ export class DashboardComponent implements OnInit {
       this.startAnimationForLineChart(dailySalesChart);
 
 
-      /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
+      /* ----------========== Completed Tasks Chart initialization - Emotions by Hours ==========---------- */
 
       const dataCompletedTasksChart: any = {
-          labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
+          labels: ['9a', '10a', '11a', '12p','1p', '2p', '3p', '4p','5p','6p','7p'],
           series: [
-              [230, 750, 450, 300, 280, 240, 200, 190]
+              [ 1,2,1, 2, 3, 4,5,6,7] /*Values for graph*/
           ]
       };
 
-     const optionsCompletedTasksChart: any = {
+      const optionsCompletedTasksChart: any = {
           lineSmooth: Chartist.Interpolation.cardinal({
               tension: 0
           }),
           low: 0,
-          high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+          high: 10, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
           chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
       }
 
@@ -114,32 +114,43 @@ export class DashboardComponent implements OnInit {
 
 
 
-      /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
+      /* ----------========== Emails Subscription Chart initialization - AVG working task per day ==========---------- */
 
       var datawebsiteViewsChart = {
-        labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-        series: [
-          [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+          labels: ['M','T','W','T','F'],
+          series: [
+              // first stack
+              {
+                  data: [5, 4, 3, 5,3],
+                  stack: 0
+              }, {
+                  data: [3,5, 4, 3, 4],
+                  stack: 1
 
-        ]
+              }
+          ]
       };
       var optionswebsiteViewsChart = {
+          stackbars:true,
           axisX: {
-              showGrid: false
+              showGrid: true
           },
+          reverseData: true,
+          horizontalBars: true,
+          stack:'normal',
           low: 0,
-          high: 1000,
-          chartPadding: { top: 0, right: 5, bottom: 0, left: 0}
+          high: 10,
+          chartPadding: { top: 0, right: 10, bottom: 0, left: 0}
       };
       var responsiveOptions: any[] = [
-        ['screen and (max-width: 640px)', {
-          seriesBarDistance: 5,
-          axisX: {
-            labelInterpolationFnc: function (value) {
-              return value[0];
-            }
-          }
-        }]
+          ['screen and (max-width: 640px)', {
+              seriesBarDistance: 10,
+              axisX: {
+                  labelInterpolationFnc: function (value) {
+                      return value[0];
+                  }
+              }
+          }]
       ];
       var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
 
