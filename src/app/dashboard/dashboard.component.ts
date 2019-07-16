@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
-      const dataDailySalesChart: any = {
+      /*const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
           series: [
               [12, 17, 7, 17, 23, 18, 38]
@@ -84,7 +84,19 @@ export class DashboardComponent implements OnInit {
           chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
       }
 
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);*/
+
+      var data = {
+          series: [5, 3, 4]
+      };
+
+      var sum = function(a, b) { return a + b };
+
+      var dailySalesChart = new Chartist.Pie('#dailySalesChart', data, {
+          labelInterpolationFnc: function(value) {
+              return Math.round(value / data.series.reduce(sum) * 100) + '%';
+          }
+      });
 
       this.startAnimationForLineChart(dailySalesChart);
 
