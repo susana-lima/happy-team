@@ -81,9 +81,12 @@
                       <div class="ct-chart" id="dailySalesChart"></div>
                   </div>
                   <div class="card-body">
-                      <h4 class="card-title">AVG Sentiments by Month</h4>
+                      <h4 class="card-title">Sentiments percentage by Month</h4>
                       <p class="card-category">
-                          <span class="text-danger"><i class="fa fa-long-arrow-up"></i> 25% </span> Sad </p>
+                          <span class="text-danger"><i class="fa fa-long-arrow-down"></i> 25% </span> Sad   &nbsp;&nbsp;&nbsp;
+                          <span class="text-warning"><i class="fa fa-long-arrow-down"></i> 33% </span> Fearful &nbsp;&nbsp;&nbsp;
+                          <span class="text-success"><i class="fa fa-long-arrow-up"></i> 42% </span> Happy 
+                      </p>
                   </div> 
                   <div class="card-footer">
                       <div class="stats">
@@ -94,20 +97,21 @@
           </div>
           
           <div class="col-md-6">
-              <div class="card card-chart">
-                  <div class="card-header card-header-warning">
-                      <div class="ct-chart" id="websiteViewsChart"></div>
-                  </div>
-                  <div class="card-body">
-                      <h4 class="card-title">AVG working task per day</h4> 
-                      <p class="card-category">This is the current last workign hours time</p>
-                  </div>
-                  <div class="card-footer">
-                      <div class="stats">
-                          <i class="material-icons">access_time</i> Data updated last 5 minutes ago
-                      </div>
-                  </div>
-              </div>
+            <div class="card card-chart">
+                <div class="card-header card-header-info">
+                    <div class="ct-chart" id="websiteViewsChart"></div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Working hours per task types and days</h4> 
+                      <p class="card-category"> New User Stories <i class="material-icons" style="color: red">fiber_manual_record</i>  
+                        Bugs <i class="material-icons" style="color:lightcyan">fiber_manual_record</i></p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">access_time</i> Data updated last 5 minutes ago
+                    </div>
+                </div>
+            </div>
           </div>
       </div>
       <div class="row">
@@ -117,12 +121,12 @@
                       <div class="ct-chart" id="completedTasksChart"></div>
                   </div>
                   <div class="card-body">
-                      <h4 class="card-title">Sentiments by Hours</h4>
-                      <p class="card-category">Sentiments shown during the working hours day</p>
+                      <h4 class="card-title">Jira tasks vs sentiments</h4>
+                      <p class="card-category">Sentiments percentage by Jira task type</p>
                   </div>
                   <div class="card-footer">
                       <div class="stats">
-                          <i class="material-icons">access_time</i> Time updated 5 minutes ago
+                          <i class="material-icons">access_time</i> Time updated 2 minutes ago
                       </div>
                   </div>
               </div>
@@ -133,9 +137,12 @@
                       <div class="ct-chart" id="jiraMonthChart"></div>
                   </div>
                   <div class="card-body">
-                      <h4 class="card-title">AVG Tasks by Month</h4>
+                      <h4 class="card-title">Tasks percentage by Month</h4>
                       <p class="card-category">
-                          <span class="text-success"><i class="fa fa-long-arrow-up"></i> 20% </span> Stories </p>
+                        <span class="text-danger"><i class="fa fa-long-arrow-down"></i> 20% </span> Bugs   &nbsp;&nbsp;&nbsp;
+                        <span class="text-warning"><i class="fa fa-long-arrow-up"></i> 65% </span> New US &nbsp;&nbsp;&nbsp;
+                        <span class="text-success"><i class="fa fa-long-arrow-down"></i> 15% </span> Meetings 
+                    </p>
                   </div>
                   <div class="card-footer">
                       <div class="stats">

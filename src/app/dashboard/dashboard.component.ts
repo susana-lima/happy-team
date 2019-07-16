@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import * as ChartistLegend from 'chartist-plugin-legend';
 
 @Component({
   selector: 'app-dashboard',
@@ -102,74 +103,81 @@ export class DashboardComponent implements OnInit {
 
 
       /* ----------========== Completed Tasks Chart initialization - Emotions by Hours ==========---------- */
-
-      const dataCompletedTasksChart: any = {
-          labels: ['9a', '10a', '11a', '12p','1p', '2p', '3p', '4p','5p','6p','7p'],
-          series: [
-              [ 1,2,1, 2, 3, 4,5,6,7], /*Values for graph*/
-              [ 3,4,3, 4, 5, 5,6,7,7],
-              [ 0,3,5, 6, 5, 3,2,5,6]
-          ]
-      };
-
-      const optionsCompletedTasksChart: any = {
-          lineSmooth: Chartist.Interpolation.cardinal({
-              tension: 0
-          }),
-          low: 0,
-          high: 10, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-          chartPadding: { top: 0, right: 0, bottom: 0, left: 0}
+    
+    var completedTasksChart = new Chartist.Bar('#completedTasksChart', 
+    {
+    labels: ['Bugs', 'Meet', 'Dev'],
+    series: [
+      [10, 10, 80],
+      [20, 40, 5],
+      [70, 50, 15]
+    ]
+  }, 
+  {
+    stackBars: true,
+    low: 0,
+    high: 100,
+    plugins: [ChartistLegend({legendNames: ['Happy', 'Sad', 'Fearful']})],
+    reverseData: true,
+    horizontalBars: true,
+    axisX: {
+      labelInterpolationFnc: function(value) {
+        return (value) + '%';
       }
-
-      var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
-
-      // start animation for the Completed Tasks Chart - Line Chart
-      this.startAnimationForLineChart(completedTasksChart);
-
+    },
+    onlyInteger: true
+  }).on('draw', function(data) {
+    if(data.type === 'bar') {
+      data.element.attr({
+        style: 'stroke-width: 25px'
+      });
+    }
+  });
+  this.startAnimationForLineChart(completedTasksChart);
 
 
       /* ----------========== Emails Subscription Chart initialization - AVG working task per day ==========---------- */
 
       var datawebsiteViewsChart = {
-          labels: ['M','T','W','T','F'],
-          series: [
-              // first stack
-              {
-                  data: [5, 4, 3, 5,3],
-                  stack: 0
-              }, {
-                  data: [3,5, 4, 3, 4],
-                  stack: 1
+        labels: ['Mon','Tue','Wed','Thu','Fri'],
+        series: [
+            // first stack
+            {
+                data: [5, 4, 7, 5,3],
+                stack: 0
+            }, {
+                data: [3,4, 1, 3, 4],
+                stack: 1
 
-              }
-          ]
-      };
-      var optionswebsiteViewsChart = {
-          stackbars:true,
-          axisX: {
-              showGrid: true
-          },
-          reverseData: true,
-          horizontalBars: true,
-          stack:'normal',
-          low: 0,
-          high: 10,
-          chartPadding: { top: 0, right: 10, bottom: 0, left: 0}
-      };
-      var responsiveOptions: any[] = [
-          ['screen and (max-width: 640px)', {
-              seriesBarDistance: 10,
-              axisX: {
-                  labelInterpolationFnc: function (value) {
-                      return value[0];
-                  }
-              }
-          }]
-      ];
-      var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
+            }
+        ]
+    };
+    var optionswebsiteViewsChart = {
+        stackbars:true,
+        axisX: {
+            showGrid: true
+        },
+        reverseData: true,
+        horizontalBars: true,
+        stack:'normal',
+        low: 0,
+        high: 7,
+        chartPadding: { top: 0, right: 10, bottom: 0, left: 0}
+    };
+    var responsiveOptions: any[] = [
+        ['screen and (max-width: 640px)', {
+            seriesBarDistance: 10,
+            axisX: {
+                labelInterpolationFnc: function (value) {
+                    return value[0];
+                }
+            }
+        }]
+    ];
+    var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
 
-      //start animation for the Emails Subscription Chart
-      this.startAnimationForBarChart(websiteViewsChart);
+    //start animation for the Emails Subscription Chart
+    this.startAnimationForBarChart(websiteViewsChart);
 
       /*Jira tasks by Month jiraMonthChart*/
       var dataJira = {
