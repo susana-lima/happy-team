@@ -94,16 +94,20 @@ export class UserProfileComponent implements OnInit {
         /* ----------========== Emails Subscription Chart initialization - AVG working task per day ==========---------- */
 
       var datawebsiteViewsChart = {
-        labels: ['M','T','W','T','F'],
+        labels: ['Mon','Tue','Wed','Thu','Fri'],
         series: [
             // first stack
             {
-                data: [5, 4, 3, 5,3],
+                data: [6, 7, 3, 7,5],
                 stack: 0
-            }, {
-                data: [3,5, 4, 3, 4],
+            },
+            {
+                data: [2, 0, 4, 0,2],
                 stack: 1
-            }
+            }/*, {
+                data: [2,3, 5, 3, 4],
+                stack: 2
+            }*/
         ]
     };
     var optionswebsiteViewsChart = {
@@ -115,12 +119,12 @@ export class UserProfileComponent implements OnInit {
         horizontalBars: true,
         stack:'normal',
         low: 0,
-        high: 10,
+        high: 7,
         chartPadding: { top: 0, right: 10, bottom: 0, left: 0}
     };
     var responsiveOptions: any[] = [
         ['screen and (max-width: 640px)', {
-            seriesBarDistance: 10,
+            seriesBarDistance: 5,
             axisX: {
                 labelInterpolationFnc: function (value) {
                     return value[0];
