@@ -106,7 +106,9 @@ export class DashboardComponent implements OnInit {
       const dataCompletedTasksChart: any = {
           labels: ['9a', '10a', '11a', '12p','1p', '2p', '3p', '4p','5p','6p','7p'],
           series: [
-              [ 1,2,1, 2, 3, 4,5,6,7] /*Values for graph*/
+              [ 1,2,1, 2, 3, 4,5,6,7], /*Values for graph*/
+              [ 3,4,3, 4, 5, 5,6,7,7],
+              [ 0,3,5, 6, 5, 3,2,5,6]
           ]
       };
 
