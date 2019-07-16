@@ -117,18 +117,16 @@ export class TableListComponent implements OnInit {
 
 
       /* ----------========== Emails Subscription Chart initialization - AVG working task per day ==========---------- */
-
       var datawebsiteViewsChart = {
-          labels: ['M','T','W','T','F'],
+          labels: ['Monday','Tuesday','Wednesday','Thursday','Friday'],
           series: [
               // first stack
               {
-                  data: [5, 4, 3, 5,3],
+                  data: [0.25, 0.50, 0.25, 0.75, 1],
                   stack: 0
               }, {
-                  data: [3,5, 4, 3, 4],
+                  data: [0.75, 0.25, 0.25, 0.25, 0.75],
                   stack: 1
-
               }
           ]
       };
@@ -137,27 +135,27 @@ export class TableListComponent implements OnInit {
           axisX: {
               showGrid: true
           },
-          reverseData: true,
-          horizontalBars: true,
+          reverseData: false,
+          horizontalBars: false,
           stack:'normal',
           low: 0,
-          high: 10,
+          high: 1,
           chartPadding: { top: 0, right: 10, bottom: 0, left: 0}
       };
       var responsiveOptions: any[] = [
           ['screen and (max-width: 640px)', {
-              seriesBarDistance: 10,
+              seriesBarDistance: 2,
               axisX: {
                   labelInterpolationFnc: function (value) {
-                      return value[0];
+                      return (value.onlyInteger);
                   }
               }
           }]
       ];
       var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
-
-      //start animation for the Emails Subscription Chart
+//start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
+
   }
 
 }
