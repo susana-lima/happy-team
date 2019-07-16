@@ -170,6 +170,21 @@ export class DashboardComponent implements OnInit {
 
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
+
+      /*Jira tasks by Month jiraMonthChart*/
+      var dataJira = {
+          series: [1.5, 2, 6.5]
+      };
+
+      var sumJira = function(a, b) { return a + b };
+
+      var jiraMonthChart = new Chartist.Pie('#jiraMonthChart', dataJira, {
+          labelInterpolationFnc: function(value) {
+              return Math.round(value / dataJira.series.reduce(sumJira) * 100) + '%';
+          }
+      });
+
+      this.startAnimationForLineChart(jiraMonthChart);
   }
 
 }
