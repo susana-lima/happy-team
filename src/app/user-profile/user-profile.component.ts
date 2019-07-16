@@ -90,6 +90,51 @@ export class UserProfileComponent implements OnInit {
 
         // start animation for the Completed Tasks Chart - Line Chart
         this.startAnimationForLineChart(completedTasksChart);
-    }
+
+        /* ----------========== Emails Subscription Chart initialization - AVG working task per day ==========---------- */
+
+      var datawebsiteViewsChart = {
+        labels: ['M','T','W','T','F'],
+        series: [
+            // first stack
+            {
+                data: [5, 4, 3, 5,3],
+                stack: 0
+            }, {
+                data: [3,5, 4, 3, 4],
+                stack: 1
+            }
+        ]
+    };
+    var optionswebsiteViewsChart = {
+        stackbars:true,
+        axisX: {
+            showGrid: true
+        },
+        reverseData: true,
+        horizontalBars: true,
+        stack:'normal',
+        low: 0,
+        high: 10,
+        chartPadding: { top: 0, right: 10, bottom: 0, left: 0}
+    };
+    var responsiveOptions: any[] = [
+        ['screen and (max-width: 640px)', {
+            seriesBarDistance: 10,
+            axisX: {
+                labelInterpolationFnc: function (value) {
+                    return value[0];
+                }
+            }
+        }]
+    ];
+    var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
+
+    //start animation for the Emails Subscription Chart
+    this.startAnimationForBarChart(websiteViewsChart);
+}
 
 }
+    
+
+
